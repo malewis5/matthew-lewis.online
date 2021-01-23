@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { FaBeer } from "react-icons/fa";
+import "./App.css";
+import axios, { AxiosResponse } from "axios";
 
-function App() {
+const App = () => {
+  const [data, setData] = React.useState<AxiosResponse>();
+  React.useEffect(() => {
+    const fetchData = () => {
+      axios.get("https://quotes.rest/qod").then((result) => setData(result));
+    };
+    fetchData();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <FaBeer />
+        <p>{data?.data.contents.quotes[0].quote}</p>
       </header>
     </div>
   );
-}
+};
 
 export default App;
