@@ -39,7 +39,6 @@ const App = () => {
 
 const AuthorDiv = styled.div`
   margin: 0 auto;
-  text-align: justify;
 `;
 
 const Header = styled.div`
@@ -66,6 +65,7 @@ const Footer = styled.div`
 const QuoteTextDiv = styled.div`
   margin: 0 auto;
   height: min-content;
+  text-align: justify;
 `;
 
 export default App;
