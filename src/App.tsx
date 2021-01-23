@@ -80,6 +80,9 @@ const Footer = styled.div`
   justify-content: center;
   font-size: calc(10px + 1vmin);
   background-color: ${theme.SECONDARY_COLOR};
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    display: none;
+  }
 `;
 
 const QuoteTextDiv = styled.div`
