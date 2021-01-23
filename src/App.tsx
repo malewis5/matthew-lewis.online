@@ -39,6 +39,7 @@ const App = () => {
 
 const AuthorDiv = styled.div`
   margin: 0 auto;
+  text-align: justify;
 `;
 
 const Header = styled.div`
