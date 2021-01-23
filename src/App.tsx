@@ -12,10 +12,13 @@ interface data {
 
 const App = () => {
   const [data, setData] = useState<data>();
+  const [quoteLoading, setQuoteLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = () => {
       axios.get("https://quotes.rest/qod").then((result) => {
         setData(result.data.contents.quotes[0]);
+        setQuoteLoading(false);
       });
     };
     fetchData();
@@ -25,7 +28,9 @@ const App = () => {
       <Header>
         {/* <IoMdBeer style={{ textShadow: `1.5px 1.5px ${theme.RED_COLOR}` }} /> */}
         <QuoteTextDiv>
-          <p style={{ marginBottom: "0" }}>"{data?.quote}"</p>
+          {!quoteLoading && (
+            <p style={{ marginBottom: "0" }}>"{data?.quote}"</p>
+          )}
         </QuoteTextDiv>
         <AuthorDiv>
           <p style={{ marginTop: "0" }}> {data?.author}</p>
