@@ -1,7 +1,9 @@
 import * as React from "react";
 import { IoMdBeer } from "react-icons/io";
 import styled from "styled-components";
+import theme from "./UI/theme";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface data {
   quote: string;
@@ -9,8 +11,8 @@ interface data {
 }
 
 const App = () => {
-  const [data, setData] = React.useState<data>();
-  React.useEffect(() => {
+  const [data, setData] = useState<data>();
+  useEffect(() => {
     const fetchData = () => {
       axios.get("https://quotes.rest/qod").then((result) => {
         setData(result.data.contents.quotes[0]);
@@ -19,13 +21,12 @@ const App = () => {
     fetchData();
   }, []);
   return (
-    <div className="App">
+    <div>
       <Header>
-        <IoMdBeer />
+        {/* <IoMdBeer style={{ textShadow: `1.5px 1.5px ${theme.RED_COLOR}` }} /> */}
         <QuoteTextDiv>
-          <p style={{ marginBottom: "0" }}>{data?.quote}</p>
+          <p style={{ marginBottom: "0" }}>"{data?.quote}"</p>
         </QuoteTextDiv>
-        -
         <AuthorDiv>
           <p style={{ marginTop: "0" }}> {data?.author}</p>
         </AuthorDiv>
@@ -39,19 +40,32 @@ const App = () => {
 
 const AuthorDiv = styled.div`
   margin: 0 auto;
+  padding-right: 20px;
+  width: 50vw;
+  animation: fadeInAnimation ease 3s;
+  text-align: right;
+  font-size: calc(30px + 2vmin);
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const Header = styled.div`
-  background-color: #282c34;
+  background-color: ${theme.PRIMARY_COLOR};
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding-left: 20px;
-  padding-right: 20px;
+  color: ${theme.WHITE_COLOR};
+  text-shadow: 1px 1px ${theme.RED_COLOR};
 `;
 
 const Footer = styled.div`
@@ -60,13 +74,25 @@ const Footer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1vmin);
+  background-color: ${theme.SECONDARY_COLOR};
 `;
 
 const QuoteTextDiv = styled.div`
-  margin: 0 auto;
-  height: min-content;
-  text-align: justify;
-  width: 70vw;
+  margin: 0 auto 10px auto;
+  font-size: calc(10px + 2vmin);
+  text-align: left;
+  width: 50vw;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export default App;
