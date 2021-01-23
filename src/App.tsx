@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IoMdBeer } from "react-icons/io";
+// import { IoMdBeer } from "react-icons/io";
 import styled from "styled-components";
 import theme from "./UI/theme";
 import axios from "axios";
