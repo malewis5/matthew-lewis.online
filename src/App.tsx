@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IoMdBeer } from "react-icons/io";
+import styled from "styled-components";
 import "./App.css";
 import axios, { AxiosResponse } from "axios";
 
@@ -25,5 +26,7 @@ const App = () => {
     </div>
   );
 };
+
+const div = styled.div``;
 
 export default App;
