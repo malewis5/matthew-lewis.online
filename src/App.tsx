@@ -66,6 +66,7 @@ const QuoteTextDiv = styled.div`
   margin: 0 auto;
   height: min-content;
   text-align: justify;
+  width: 70vw;
 `;
 
 export default App;
