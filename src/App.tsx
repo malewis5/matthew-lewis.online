@@ -37,7 +37,7 @@ const App = () => {
         </AuthorDiv>
       </Header>
       <Footer>
-        <code>Made with &#128516; in NYC.</code>
+        <code>Made with &#128516; in NYC. Coming soon.</code>
       </Footer>
     </div>
   );
