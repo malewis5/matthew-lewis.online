@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+interface ToggleProps {
+  toggleTheme: any;
+}
+const Toggle: React.FC<ToggleProps> = ({ toggleTheme }) => {
+  return <Button onClick={toggleTheme}>Switch Theme</Button>;
+};
+
 const Button = styled.button`
   background: ${({ theme }) => theme.background};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -9,12 +16,5 @@ const Button = styled.button`
   font-size: 0.8rem;
   padding: 0.6rem;
 `;
-
-interface toggleProps {
-  toggleTheme: any;
-}
-const Toggle: React.FC<toggleProps> = ({ toggleTheme }) => {
-  return <Button onClick={toggleTheme}>Switch Theme</Button>;
-};
 
 export default Toggle;
