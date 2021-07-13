@@ -12,7 +12,7 @@ function App() {
       <>
         <GlobalStyles />
         <MainApp>
-          <Toggle toggleTheme={themeToggler} />
+          <Toggle toggleTheme={themeToggler} theme={theme} />
         </MainApp>
       </>
     </ThemeProvider>
