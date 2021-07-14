@@ -1,11 +1,13 @@
 import styled, { keyframes } from "styled-components";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { ThemeType } from "../../utils/theme";
 
 interface ToggleProps {
   theme: any;
   toggleTheme: any;
+  themeMode: ThemeType;
 }
-const Toggle: React.FC<ToggleProps> = ({ toggleTheme, theme }) => {
+const Toggle: React.FC<ToggleProps> = ({ toggleTheme, theme, themeMode }) => {
   return (
     <>
       {theme === "light" ? (
@@ -14,7 +16,12 @@ const Toggle: React.FC<ToggleProps> = ({ toggleTheme, theme }) => {
         </SpinDiv>
       ) : (
         <MoonDiv>
-          <FiMoon onClick={toggleTheme} size={40} />
+          <FiMoon
+            onClick={toggleTheme}
+            size={40}
+            fill={"#FFCC00"}
+            color={themeMode.iconBorder}
+          />
         </MoonDiv>
       )}
     </>
@@ -60,7 +67,7 @@ const MoonDiv = styled.div`
   transition: background-color 0.5s;
   &:hover {
     transition: background-color 0.5s;
-    background-color: rgb(255, 204, 0);
+    background-color: #8a8a8a;
   }
 `;
 
