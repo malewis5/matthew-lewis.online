@@ -4,7 +4,7 @@ import { lightTheme, darkTheme } from "../../utils/theme";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import Toggle from "../UI/Toggler";
 
-//Custom Components
+//Custom Component
 import { Quote } from "../Quote";
 
 function App() {
