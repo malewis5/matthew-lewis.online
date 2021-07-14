@@ -23,6 +23,9 @@ function App() {
             />
           </TogglerDiv>
           <Quote />
+          <footer>
+            <code>Made with &#128516; in NYC. Coming soon.</code>
+          </footer>
         </MainApp>
       </>
     </ThemeProvider>
@@ -31,6 +34,9 @@ function App() {
 
 const MainApp = styled.div`
   min-height: 100vh;
+  @media only screen and (max-device-width: 1000px) {
+    min-height: -webkit-fill-available;
+  }
   display: flex;
   align-items: center;
   justify-content: center;

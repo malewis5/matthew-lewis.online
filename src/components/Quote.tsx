@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Loading } from "../components/UI/Loading";
 
 interface QuoteObject {
   author: string;
@@ -8,8 +9,10 @@ interface QuoteObject {
 
 const Quote: React.FC = () => {
   const [quote, setQuote] = useState({} as QuoteObject);
+  const [loading, setLoading] = useState(true);
 
   const fetchQuote = () => {
+    setLoading(true);
     fetch("https://quotes.rest/qod")
       .then((response) => {
         if (!response.ok) {
@@ -17,20 +20,16 @@ const Quote: React.FC = () => {
         } else return response;
       })
       .then((response) => response.json())
-      .then((data) =>
+      .then((data) => {
         setQuote({
-          author: data?.contents?.quotes[0]?.author ?? "Matthew Lewis",
-          quote:
-            data?.contents?.quotes[0]?.quote ??
-            "I talk to myself and but I rarely listen.",
-        })
-      )
+          author: data?.contents?.quotes[0]?.author,
+          quote: data?.contents?.quotes[0]?.quote,
+        });
+        setLoading(false);
+      })
       .catch((error) => {
         console.log(error);
-        setQuote({
-          author: "Matthew Lewis",
-          quote: "I talk to myself but I rarely listen.",
-        });
+        setLoading(false);
       });
   };
 
@@ -39,15 +38,31 @@ const Quote: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <QuoteTextDiv>{quote.quote}</QuoteTextDiv>
-      <AuthorDiv>{quote.author}</AuthorDiv>
-    </div>
+    <QuoteContainer>
+      {!loading ? (
+        <>
+          <QuoteTextDiv>{`"${
+            quote?.quote ?? "I talk to myself but I rarely listen"
+          }"`}</QuoteTextDiv>
+
+          <AuthorDiv>{quote?.author ?? "Matthew Lewis"}</AuthorDiv>
+        </>
+      ) : (
+        <Loading />
+      )}
+    </QuoteContainer>
   );
 };
 
+const QuoteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+
 const QuoteTextDiv = styled.div`
-  margin: 0 auto 10px auto;
   font-size: calc(10px + 2vmin);
   text-align: left;
   width: 50vw;

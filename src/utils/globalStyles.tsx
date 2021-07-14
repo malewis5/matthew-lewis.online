@@ -17,4 +17,13 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         margin: 0;
         padding: 0;
     }
+    footer {
+        min-height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 1vmin);
+        position: absolute;
+        bottom: 0px;
+    }
 `;
