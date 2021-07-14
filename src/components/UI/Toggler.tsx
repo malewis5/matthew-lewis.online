@@ -1,10 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { ThemeType } from "../../utils/theme";
 
 interface ToggleProps {
   theme: any;
   toggleTheme: any;
-  themeMode: any;
+  themeMode: ThemeType;
 }
 const Toggle: React.FC<ToggleProps> = ({ toggleTheme, theme, themeMode }) => {
   return (
@@ -15,7 +16,12 @@ const Toggle: React.FC<ToggleProps> = ({ toggleTheme, theme, themeMode }) => {
         </SpinDiv>
       ) : (
         <MoonDiv>
-          <FiMoon onClick={toggleTheme} size={40} fill={"#FFCC00"} />
+          <FiMoon
+            onClick={toggleTheme}
+            size={40}
+            fill={"#FFCC00"}
+            color={themeMode.iconBorder}
+          />
         </MoonDiv>
       )}
     </>

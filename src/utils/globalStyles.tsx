@@ -6,7 +6,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     #main {
         background-color: ${({ theme }) => theme.body};
         color: ${({ theme }) => theme.text};
-        transition: all 0.50s linear;
+        transition: background-color 0.50s ease;
+        transition: color 0.50s ease;
     }
 
     * {
