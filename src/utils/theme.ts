@@ -1,7 +1,7 @@
 export type ThemeType = typeof lightTheme;
 
 export const darkTheme = {
-  body: "#5a3159",
+  body: "#252525",
   toggleBorder: "#ff4072",
 };
 
